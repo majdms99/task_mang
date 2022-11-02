@@ -25,8 +25,15 @@ const Register = () => {
             navigate('/')
         },
         onError: (error) => {
-            console.log(error);
-            alert.error(error.response.data.error);
+            if (error.response.data) {
+                alert.error(error.response.data);
+            }
+            if (error.response.data?.password) {
+                alert.error(error.response.data?.password);
+            }
+            if (error.response.data?.error) {
+                alert.error(error.response.data?.error);
+            }
             setLoading(false)
         },
         onMutate: () => {
